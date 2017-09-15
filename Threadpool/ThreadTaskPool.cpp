@@ -79,13 +79,13 @@ ThreadTaskPool::ThreadTaskPool(int threadNum)
 
 ThreadTaskPool::~ThreadTaskPool()
 {
-    stop();
 }
 
 void ThreadTaskPool::start()
 {
     //创建线程池管理线程
     thread_ = std::thread(&ThreadTaskPool::run, this);
+    thread_.detach();
 }
 
 void ThreadTaskPool::run()
@@ -93,14 +93,14 @@ void ThreadTaskPool::run()
     while (true)
     {
         if (stop_.load())
-            return;
+            break;
 
         {
             std::unique_lock<std::mutex> ulk(task_mutex_);
             this->cond_.wait(ulk, [this]{ return stop_.load() || !this->tasks_.empty(); });
 
             if (stop_.load())
-                return;
+                break;
 
 
             {
@@ -119,6 +119,7 @@ void ThreadTaskPool::run()
             }
         }
     }
+    printf("exit loop");
 }
 
 void ThreadTaskPool::addTask(ITask* task)
@@ -154,18 +155,24 @@ size_t ThreadTaskPool::idlThreadNum()
 void ThreadTaskPool::stop()
 {
     stop_.store(true);
+    cond_.notify_all();
+    release();
+}
 
+void ThreadTaskPool::release()
+{
     //空闲的线程立刻销毁,运行中的线程在其运行完成后销毁
     std::unique_lock<std::mutex> ulk(thread_mutex_);
     CThreadTask* pTaskthread = NULL;
-    do 
+    do
     {
         if (idel_threads_.empty())
             break;
 
-        pTaskthread = idel_threads_.top();  
+        pTaskthread = idel_threads_.top();
         if (pTaskthread){
             delete pTaskthread;
+            idel_threads_.pop();
         }
         else{
             idel_threads_.pop();

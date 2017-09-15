@@ -99,6 +99,7 @@ public:
     size_t taskNum();
     size_t idlThreadNum();
     void stop();
+    void release();
     void SetThreadidl(CThreadTask *myThread);
 private:
     ThreadTaskPool& operator=(const ThreadTaskPool&);
@@ -110,6 +111,6 @@ private:
     std::condition_variable     cond_;          // 条件阻塞
     TaskContainer               tasks_;         // 任务队列
     std::thread                 thread_;        //调度线程
-    std::stack<CThreadTask*>     idel_threads_;  // 空闲线程队列
+    std::stack<CThreadTask*>    idel_threads_;  // 空闲线程队列
 };
 

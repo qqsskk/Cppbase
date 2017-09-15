@@ -14,7 +14,7 @@ public:
     int run()
     {
         printf("hello world\r\n");
-        Sleep(1000);
+        Sleep(100);
         return 0;
     }
 };
@@ -43,7 +43,6 @@ int _tmain(int argc, _TCHAR* argv[])
             break;
         }
     }
-    getchar();
     return 0;
 }
 
