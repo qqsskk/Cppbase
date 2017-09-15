@@ -119,7 +119,7 @@ void ThreadTaskPool::run()
             }
         }
     }
-    printf("exit loop");
+    printf("exit loop\n");
 }
 
 void ThreadTaskPool::addTask(ITask* task)

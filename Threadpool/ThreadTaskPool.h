@@ -110,7 +110,7 @@ private:
     std::mutex                  thread_mutex_;  // 线程队列锁
     std::condition_variable     cond_;          // 条件阻塞
     TaskContainer               tasks_;         // 任务队列
-    std::thread                 thread_;        //调度线程
+    std::thread                 thread_;        // 调度线程
     std::stack<CThreadTask*>    idel_threads_;  // 空闲线程队列
 };
 
