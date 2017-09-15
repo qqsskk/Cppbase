@@ -26,6 +26,11 @@ void ITask::SetPriority(int priority)
     priority_ = priority;
 }
 
+int ITask::GetPriority() const
+{
+    return priority_;
+}
+
 void ITask::SetAutoRelease(bool bAutoRelease)
 {
     bAutoRelease_ = bAutoRelease;
@@ -216,10 +221,11 @@ void CThreadTask::Assign(ITask *task)
 
 void CThreadTask::Run()
 {
-    char ch[100] = { 0 };
-    _snprintf_s(ch, 100, _TRUNCATE, "threadid is %d \r\n", threadid_);
-    printf(ch);
     task_->run();
+    if (task_->IsAutoRelease())
+    {
+        task_->release();
+    }
     threadpool_ ->SetThreadidl(this);
 }
 

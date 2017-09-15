@@ -9,13 +9,14 @@
 
 #include <thread>
 #include <mutex>
-#include <condition_variable>
+
 #include <list>
 #include <atomic>
 #include <deque>
 #include <stack>
 #include <queue>
 #include <iostream>
+#include <condition_variable>
 
 typedef void* TASKARG;
 
@@ -34,21 +35,30 @@ public:
     {
         return lv.priority_ < rv.priority_;
     }
-
     ITask();
     virtual ~ITask();
     void setArg(TASKARG arg);
     void setName(const std::string& strName);
     virtual int run() = 0;
     void SetPriority(int priority);
+    int GetPriority() const;
     void SetAutoRelease(bool bAutoRelease);
     bool IsAutoRelease();
     virtual void release(){ delete this; }
+    
 protected:
     int   priority_ = Normal;        //任务优先级
     TASKARG     arg_;                //任务参数
     std::string taskName_;           //任务名称
     bool bAutoRelease_ = true;       //是否自动删除
+};
+
+struct PCmp
+{
+    bool operator () (ITask const *x, ITask const *y)
+    {
+        return x->GetPriority() < y->GetPriority();
+    }
 };
 
 //任务容器
@@ -61,9 +71,9 @@ public:
     ITask* top();
     void pop();
     bool empty();
-    std::priority_queue<ITask*>::size_type size();
+    std::priority_queue<ITask*, std::vector<ITask*>, PCmp >::size_type size();
 private:
-    std::priority_queue<ITask*> task_container_;
+    std::priority_queue<ITask*, std::vector<ITask*>, PCmp > task_container_;
 };
 
 class ThreadTaskPool;

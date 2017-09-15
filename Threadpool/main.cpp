@@ -13,7 +13,7 @@ public:
 
     int run()
     {
-        printf("hello world\r\n");
+        printf(taskName_.c_str());
         Sleep(10);
         return 0;
     }
@@ -22,20 +22,36 @@ public:
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-    ThreadTaskPool threadPool(10);
-    threadPool.start();
-    MyTask taskObj[200];
+    ThreadTaskPool threadPool(15);
+    MyTask taskObj[100];
 
-    for (int i = 0; i < 200; i++)
+    for (int i = 0; i < 100; i++)
     {
         taskObj[i].SetAutoRelease(false);
+        char ch[50] = { 0 };
+       
+        if (i%3 == 0)
+        {
+            _snprintf_s(ch, 50, _TRUNCATE, "优先任务id %d\r\n", i);
+            taskObj[i].SetPriority(ITask::High);
+        }
+        else if(i % 10 == 0)
+        {
+            _snprintf_s(ch, 50, _TRUNCATE, "实时任务id %d\r\n", i);
+            taskObj[i].SetPriority(ITask::Realtime);
+        }
+        else
+        {
+            _snprintf_s(ch, 50, _TRUNCATE, "普通任务id %d\r\n", i);
+        }
+        taskObj[i].setName(ch);
         threadPool.addTask(&taskObj[i]);
     }
-    
+    threadPool.start();
     while (true)
     {
         ::Sleep(100);
-        printf("there are still %d tasks need to process\n", threadPool.taskNum());
+        //printf("there are still %d tasks need to process\n", threadPool.taskNum());
         if (threadPool.taskNum() == 0)
         {
             threadPool.stop();
