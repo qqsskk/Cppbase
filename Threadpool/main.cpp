@@ -23,9 +23,10 @@ public:
 int _tmain(int argc, _TCHAR* argv[])
 {
     ThreadTaskPool threadPool(15);
-    MyTask taskObj[100];
+    threadPool.start();
 
-    for (int i = 0; i < 100; i++)
+    MyTask taskObj[3000];
+    for (int i = 0; i < 3000; i++)
     {
         taskObj[i].SetAutoRelease(false);
         char ch[50] = { 0 };
@@ -47,7 +48,7 @@ int _tmain(int argc, _TCHAR* argv[])
         taskObj[i].setName(ch);
         threadPool.addTask(&taskObj[i]);
     }
-    threadPool.start();
+   
     while (true)
     {
         ::Sleep(100);
