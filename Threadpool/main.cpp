@@ -14,7 +14,7 @@ public:
     int run()
     {
         printf(taskName_.c_str());
-        Sleep(10);
+        Sleep(2000);
         return 0;
     }
 };
@@ -23,7 +23,6 @@ public:
 int _tmain(int argc, _TCHAR* argv[])
 {
     ThreadTaskPool threadPool(15);
-    threadPool.start();
 
     MyTask taskObj[3000];
     for (int i = 0; i < 3000; i++)
@@ -48,7 +47,7 @@ int _tmain(int argc, _TCHAR* argv[])
         taskObj[i].setName(ch);
         threadPool.addTask(&taskObj[i]);
     }
-   
+    threadPool.start();
     while (true)
     {
         ::Sleep(100);

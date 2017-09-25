@@ -66,7 +66,8 @@ std::priority_queue<ITask*>::size_type TaskContainer::size()
     return task_container_.size();
 }
 
-ThreadTaskPool::ThreadTaskPool(int threadNum)
+ThreadTaskPool::ThreadTaskPool(int threadNum, int wait_seconds)
+    :seconds_wait(wait_seconds)
 {
     if (threadNum <= 0)
     {
@@ -102,7 +103,7 @@ void ThreadTaskPool::run()
 
         {
             std::unique_lock<std::mutex> ulk(task_mutex_);
-            this->cond_.wait(ulk, [this]{ return stop_.load() || !this->tasks_.empty(); });
+            this->cond_.wait_for(ulk, seconds_wait, [this]{ return/* stop_.load() ||*/ !this->tasks_.empty(); });
 
             if (stop_.load())
                 break;

@@ -97,10 +97,12 @@ private:
     std::thread thread_;
 };
 
+
+
 class ThreadTaskPool
 {
 public:
-    explicit ThreadTaskPool(int threadNum = 0);
+    explicit ThreadTaskPool(int threadNum = 0, int wait_seconds = 1);
     ~ThreadTaskPool();
 public:
     void start();
@@ -122,5 +124,8 @@ private:
     TaskContainer               tasks_;         // 任务队列
     std::thread                 thread_;        // 调度线程
     std::stack<CThreadTask*>    idel_threads_;  // 空闲线程队列
+
+    typedef std::chrono::duration<int> seconds_type;
+    seconds_type seconds_wait;
 };
 
