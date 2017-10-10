@@ -27,6 +27,9 @@
     <ClInclude Include="ThreadTaskPool.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="lockfreeQueue.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

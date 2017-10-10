@@ -81,6 +81,7 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="lockfreeQueue.hpp" />
     <ClInclude Include="ThreadTaskPool.h" />
   </ItemGroup>
   <ItemGroup>
