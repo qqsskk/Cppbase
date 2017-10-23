@@ -13,21 +13,28 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="task">
+      <UniqueIdentifier>{ead786fd-c7c9-47a1-b922-3edc82a8bdc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="queue">
+      <UniqueIdentifier>{fedfcce7-5f8c-43f0-83da-8d65b121d70a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ThreadTaskPool.h">
-      <Filter>头文件</Filter>
+      <Filter>task</Filter>
     </ClInclude>
-    <ClInclude Include="lockfreeQueue.hpp">
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="LockfreeQueue.h">
+      <Filter>queue</Filter>
+    </ClInclude>
+    <ClInclude Include="Sort.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -39,6 +46,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ThreadTaskPool.cpp">
+      <Filter>task</Filter>
+    </ClCompile>
+    <ClCompile Include="test_task.cpp">
+      <Filter>task</Filter>
+    </ClCompile>
+    <ClCompile Include="LockfreeQueue.cpp">
+      <Filter>queue</Filter>
+    </ClCompile>
+    <ClCompile Include="Sort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

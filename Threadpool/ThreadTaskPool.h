@@ -50,7 +50,7 @@ protected:
     int   priority_ = Normal;        //任务优先级
     TASKARG     arg_;                //任务参数
     std::string taskName_;           //任务名称
-    bool bAutoRelease_ = true;       //是否自动删除
+    bool bAutoRelease_ = true;       //是否自动删除*
 };
 
 struct PCmp
