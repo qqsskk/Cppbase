@@ -52,6 +52,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.;./common/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -67,6 +68,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.;./common/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -79,14 +81,25 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LockfreeQueue.h" />
+    <ClInclude Include="..\common\Condition.h" />
+    <ClInclude Include="..\common\DateTime.h" />
+    <ClInclude Include="..\common\Lock.h" />
+    <ClInclude Include="..\common\ostype.h" />
+    <ClInclude Include="..\common\Thread.h" />
+    <ClInclude Include="..\common\Timestamp.h" />
+    <ClInclude Include="..\common\Util.h" />
     <ClInclude Include="Sort.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="ThreadTaskPool.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LockfreeQueue.cpp" />
+    <ClCompile Include="..\common\Condition.cpp" />
+    <ClCompile Include="..\common\DateTime.cpp" />
+    <ClCompile Include="..\common\Lock.cpp" />
+    <ClCompile Include="..\common\Thread.cpp" />
+    <ClCompile Include="..\common\Timestamp.cpp" />
+    <ClCompile Include="..\common\Util.cpp" />
     <ClCompile Include="Sort.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

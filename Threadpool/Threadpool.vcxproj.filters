@@ -16,8 +16,11 @@
     <Filter Include="task">
       <UniqueIdentifier>{ead786fd-c7c9-47a1-b922-3edc82a8bdc2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="queue">
-      <UniqueIdentifier>{fedfcce7-5f8c-43f0-83da-8d65b121d70a}</UniqueIdentifier>
+    <Filter Include="util">
+      <UniqueIdentifier>{476f5e08-3045-4fe5-88f8-cafbcd11bb4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="net">
+      <UniqueIdentifier>{dae321c6-51cc-4a76-ae0f-0114ec25b264}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -31,11 +34,29 @@
       <Filter>task</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="LockfreeQueue.h">
-      <Filter>queue</Filter>
-    </ClInclude>
     <ClInclude Include="Sort.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\Condition.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\DateTime.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\Lock.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\ostype.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\Thread.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\Timestamp.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\Util.h">
+      <Filter>util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -51,11 +72,26 @@
     <ClCompile Include="test_task.cpp">
       <Filter>task</Filter>
     </ClCompile>
-    <ClCompile Include="LockfreeQueue.cpp">
-      <Filter>queue</Filter>
-    </ClCompile>
     <ClCompile Include="Sort.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\Condition.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\DateTime.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\Lock.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\Thread.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\Timestamp.cpp">
+      <Filter>util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\Util.cpp">
+      <Filter>util</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
