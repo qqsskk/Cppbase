@@ -58,6 +58,9 @@
     <ClInclude Include="..\common\Util.h">
       <Filter>util</Filter>
     </ClInclude>
+    <ClInclude Include="noncopyable.h">
+      <Filter>util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

@@ -111,9 +111,4 @@ const uint32 INVALID_VALUE = 0;
 
 typedef void(*callback_t)(void* callback_data, uint8 msg, uint32 handle, void* pParam);
 
-#include <string>
-#include <vector>
-#include <map>
-#include <queue>
-
 #endif
